@@ -13,3 +13,95 @@
  *= require_tree .
  *= require_self
  */
+body, header, div, p, a, ul, ol, li, h1, h2, h3, input {
+  margin: 0;
+  padding: 0;
+}
+
+body, .button {
+ font-family: 'Indie Flower', cursive;
+ background-color: indigo;
+ color: aquamarine;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(41, 38, 38);
+}
+
+header h1 {
+  padding: 10px;
+}
+
+input.button {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 6px;
+}
+
+header .user-auth-buttons {
+  list-style: none;
+}
+
+/* body > header > ul > li > a.button {
+  margin: 10px;
+} */
+
+div.main {
+  width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+div.content {
+  margin: 20px;
+}
+
+.content > h1 {
+  text-align: center;
+  margin: 20px;
+}
+
+.button {
+  background-color: aquamarine;
+  color: indigo;
+  border-radius: 5px;
+  font-size: 12px;
+  border: 3px solid aquamarine;
+}
+
+input[type=text] {
+  border: 3px solid aquamarine;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul.user-auth-buttons > li {
+  display: inline;
+  margin: 3px;
+}
+
+ul.user-auth-buttons > li > a {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+ul.user-auth-buttons {
+  margin: 20px;
+}
+
+.margin-centered {
+  margin: 0 auto;
+}
+
+input.button.margin-centered {
+  display: block;
+  margin: 20px auto;
+  font-size: 15px;
+}

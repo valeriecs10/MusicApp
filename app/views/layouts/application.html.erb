@@ -5,11 +5,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+      <header>
+        <h1 class="header-logo">MusicApp</h2>
+        <ul class="user-auth-buttons">
+          <% if current_user %>
+            <li><form action="<%= session_url %>" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Log Out" class="button">
+            </form></li>
+          <% else %>
+            <li><a href="<%= new_user_url %>" class="button">Sign Up</a></li>
+            <li><a href="<%= new_session_url %>" class="button">Log In</a></li>
+          <% end %>
+        </ul>
+      </header>
+    <div class="main margin-centered">
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
