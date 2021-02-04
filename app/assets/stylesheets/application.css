@@ -29,6 +29,7 @@ header {
   display: flex;
   justify-content: space-between;
   background-color: rgb(41, 38, 38);
+  border-bottom: 3px solid aquamarine;
 }
 
 header h1 {
