@@ -1,11 +1,3 @@
 <h1>Create new Album</h1>
 
-<form action="<%= albums_url %>" method="post">
-<label for="band_name">Band name:</label>
-  <select name="album[:band_id]" id="band_id">
-    <% Band.all.each do |band| %>
-      <option <%= @band_id == band.id ? "selected" : "" %> value="<%= band.id %>"><%= band.name %> </option>
-    <% end %>
-  </select>
-
-</form>
+<%= render 'form', album: @album, action: :new %>

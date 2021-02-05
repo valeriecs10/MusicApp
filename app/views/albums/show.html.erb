@@ -1,0 +1,4 @@
+<h1><%= @album.title %></h1>
+<h2>Artist: <%= Band.find_by_id(@album.band_id).name %></h2>
+<h3>Release year: <%= @album.year %></h3>
+<h3><%= @album.live? ? "Live" : "Studio Recorded" %></h3>
