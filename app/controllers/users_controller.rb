@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :redirect_unless_logged_in, only: [:new, :create]
   def new
     render :new
   end

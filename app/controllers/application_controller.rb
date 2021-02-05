@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
     return true if session[:session_token]
     false
   end
+
+  def redirect_unless_logged_in
+    unless current_user
+      redirect_to new_session_url
+    end
+  end
 end
