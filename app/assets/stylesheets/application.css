@@ -13,9 +13,10 @@
  *= require_tree .
  *= require_self
  */
-body, header, div, p, a, ul, ol, li, h1, h2, h3, input {
+body, header, form, input, div, p, a, ul, ol, li, h1, h2, h3, input {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body, .button {
@@ -24,8 +25,11 @@ body, .button {
  color: aquamarine;
 }
 
+/* Header styling */
+
 header {
   width: 100%;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   background-color: rgb(41, 38, 38);
@@ -36,19 +40,19 @@ header h1 {
   padding: 10px;
 }
 
+header .user-auth-buttons {
+  list-style: none;
+  height: 40px;
+}
+
+/* form elements styling */
+
 input.button {
   padding-left: 10px;
   padding-right: 10px;
-  margin: 6px;
 }
 
-header .user-auth-buttons {
-  list-style: none;
-}
 
-/* body > header > ul > li > a.button {
-  margin: 10px;
-} */
 
 div.main {
   width: 700px;
@@ -84,8 +88,7 @@ a {
 }
 
 ul.user-auth-buttons > li {
-  display: inline;
-  margin: 3px;
+  display: inline-block;
 }
 
 ul.user-auth-buttons > li > a {
@@ -94,7 +97,8 @@ ul.user-auth-buttons > li > a {
 }
 
 ul.user-auth-buttons {
-  margin: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
 }
 
 .margin-centered {
