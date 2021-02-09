@@ -1,3 +1,5 @@
 <h1>Create new Album</h1>
 
-<%= render 'form', album: @album, action: :new %>
+<%= render_flash_messages unless flash.empty? %>
+
+<%= render 'form', album: @album, band_id: @band_id, action: :new %>

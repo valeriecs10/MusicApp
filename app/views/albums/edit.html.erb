@@ -1,3 +1,5 @@
 <h1>Edit Album</h1>
 
+<%= render_flash_messages unless flash.empty? %>
+
 <%= render 'form', album: @album, action: :edit %>
