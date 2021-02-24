@@ -8,9 +8,17 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_credentials(params[:user][:email], params[:user][:password])
     if user
-      login_user!(user)
-      redirect_to user_url(user)
+      if user.activated
+        login_user!(user)
+        redirect_to bands_url
+      else
+        msg= "Account not yet activated"
+        flash_message(:alert, msg)
+        render :new
+      end
     else 
+      msg = "Wrong user/password combo"
+      flash_message(:alert, msg)
       render :new
     end
   end
