@@ -4,17 +4,9 @@
   <% action_url = albums_url %>
 <% end %>
 <br>
-<ul>
-  <% flash.each do |name, msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
-<br>
 <form action="<%= action_url %>" method="post">
   <%= auth_token %>
-  <% if action == :edit %>
-    <input type="hidden" name="_method" value="patch">
-  <% end %>
+  <%= action == :edit ? patch_method : "" %>
 
   <label for="album_title">Title:</label>
   <input type="text" name="album[title]" id="album_title" value="<%= album.title %>">
