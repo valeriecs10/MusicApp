@@ -1,0 +1,17 @@
+<% if obj.is_a?(Band) %>
+  <% action_url = band_url(obj) %>
+<% elsif obj.is_a?(Album) %>
+  <% action_url = album_url(obj) %>
+<% elsif obj.is_a?(Track) %>
+  <% alction_url = track_url(obj) %>
+<% elsif obj.is_a?(Note) %>
+  <% action_url = note_url(obj) %>
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <%= auth_token %>
+  <input type="submit" 
+        value="Delete <%= obj.class.name %>"
+        class="button">
+</form>

@@ -1,0 +1,13 @@
+<% if obj.is_a?(Band) %>
+  <% action_url = edit_band_url(obj) %>
+<% elsif obj.is_a?(Album) %>
+  <% action_url = edit_album_url(obj) %>
+<% elsif obj.is_a?(Track) %>
+  <% action_url = edit_track_url(obj) %>
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="patch">
+  <input type="submit" value="Update <%= obj.class.name %>">
+</form>
