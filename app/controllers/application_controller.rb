@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  helper_method :current_user, :redirect_unless_logged_in, :flash_message
+  before_action :redirect_unless_logged_in
 
   def current_user
     user = User.find_by(session_token: session[:session_token])
@@ -21,5 +22,10 @@ class ApplicationController < ActionController::Base
     unless current_user
       redirect_to new_session_url
     end
+  end
+
+  def flash_message(type, msg)
+    flash[type] ||= []
+    flash[type] << msg
   end
 end
