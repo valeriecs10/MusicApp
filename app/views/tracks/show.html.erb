@@ -1,0 +1,24 @@
+<h1><%= @track.title %></h1>
+
+<h2>Album: <%= @track.album.title %></h2>
+<h2>Track Number: <%= @track.ord %></h2>
+<h2><%= @track.bonus ? "Bonus Track" : "" %></h2>
+
+<% if @track.lyrics? %>
+  <%= ugly_lyrics(@track.lyrics) %>
+<% end %>
+
+<% notes = @track.notes %>
+<% unless notes.empty? %>
+  <h2 class="underline">Notes</h2>
+  <% notes.each do |note| %>
+    <%= render 'notes/note', note: note, email: note.user.email %>
+    <% if note.user.email == current_user.email %>
+      <%= render 'shared/delete_button', obj: note %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<a href="<%= edit_track_url(@track) %>" class="button">Edit Track</a>
+<a href="<%= new_track_note_url(@track) %>" class="button">New Note</a>
+<%= render 'shared/delete_button', obj: @track %>
