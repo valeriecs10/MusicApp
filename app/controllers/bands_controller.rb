@@ -5,7 +5,7 @@ class BandsController < ApplicationController
   end
 
   def show
-    @band = Band.find_by_id(params[:id])
+    @band = Band.includes(:albums).find_by_id(params[:id])
   end 
 
   def new
@@ -18,6 +18,7 @@ class BandsController < ApplicationController
     if @band.save
       redirect_to bands_url
     else
+      log_flash_messages
       render :new
     end
   end
@@ -33,6 +34,7 @@ class BandsController < ApplicationController
     if @band.update_attributes(band_params)
       redirect_to band_url(@band)
     else
+      log_flash_messages
       render :edit
     end
   end
@@ -47,6 +49,12 @@ class BandsController < ApplicationController
   end
 
   private
+
+  def log_flash_messages
+    @band.errors.full_messages.each do |msg|
+      flash_message(:alert, msg)
+    end
+  end
 
   def band_params
     params.require(:band).permit(:name)
