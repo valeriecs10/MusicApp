@@ -1,10 +1,19 @@
 
 <h1><%= @band.name %></h1>
 
-<!-- <h2>Albums</h2>
-<% # albums = Albums.find_by(band_id: @band.id) %>
+<% albums = @band.albums %>
+<% unless albums.empty? %>
+  <h2>Albums</h2>
+<% end %>
+
 <ul>
-  <% # albums.each do |album| %>
-    <li><%#= #album.name %></li>
-  <% # end %>
-</ul> -->
+  <% albums.each do |album| %>
+    <li class="feature-container">
+      <a href="<%= album_url(album) %>"><%= album.title %></a>
+    </li>
+  <% end %>
+</ul>
+
+<a href="<%= new_band_album_url(@band) %>" class="button">New Album</a>
+<a href="<%= edit_band_url(@band) %>" class="button">Edit Band</a>
+<%= render 'shared/delete_button', obj: @band %>
